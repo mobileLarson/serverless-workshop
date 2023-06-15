@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 public class GreetingService {
 
     // default greeting
-    private static String DEFAULT_GREET = "Hello! I would really like to know, who you are!";
+    private static String DEFAULT_GREET = "Hello! I would really like to know, ...!";
 
     /**
      * Generates greeting string from full name string as "lastName, firstName"
@@ -56,7 +56,7 @@ public class GreetingService {
         String greeting = DEFAULT_GREET;
 
         if (firstName != null && lastName != null) {
-            greeting = String.format("Hello, %s %s! i am pleased to meet you.", firstName, lastName);
+            greeting = String.format("Hello, %s %s!", firstName, lastName);
         }
 
         return greeting;

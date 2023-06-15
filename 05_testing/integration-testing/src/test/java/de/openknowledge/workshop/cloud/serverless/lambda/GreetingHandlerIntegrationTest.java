@@ -30,10 +30,12 @@ import static org.hamcrest.core.IsEqual.equalTo;
  */
 public class GreetingHandlerIntegrationTest {
 
-    private static final String errorMissingParameter = "Missing or incorrect parameters. Expected \"firstName\" and \"lastName\".";
+    private static final String errorMissingParameter = "Missing or incorrect parameters. Expected 'firstName' and 'lastName'.";
 
     private final static Integer HTTP_STATUS_CODE_OK = 200;
+    private final static Integer HTTP_STATUS_CREATED = 201;
     private final static Integer HTTP_STATUS_CODE_BAD_REQUEST = 400;
+    private final static Integer HTTP_STATUS_CODE_UNPROCESSABLE_ENTITY = 422;
 
     private final static String CONTENT_TYPE_JSON = "application/json";
 
@@ -68,8 +70,9 @@ public class GreetingHandlerIntegrationTest {
                 .when()
                     .post()
                 .then()
-                    .statusCode(HTTP_STATUS_CODE_OK)
-                    .body("greeting", equalTo("Hello, Lars Roewekamp! i am pleased to meet you."));
+                    .body("greeting", equalTo("Hello, Lars Roewekamp! i am pleased to meet you."))
+                    .statusCode(HTTP_STATUS_CREATED);
+
     }
 
     /**
@@ -91,8 +94,8 @@ public class GreetingHandlerIntegrationTest {
                 .when()
                     .post()
                 .then()
-                    .statusCode(HTTP_STATUS_CODE_BAD_REQUEST)
-                    .body("errorCode", equalTo(400))
+                    .statusCode(HTTP_STATUS_CODE_UNPROCESSABLE_ENTITY)
+                    .body("errorCode", equalTo(422))
                     .body("errorMessage", equalTo(errorMissingParameter));
     }
 }

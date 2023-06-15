@@ -59,9 +59,11 @@ public class GreetingHandlerTestMock {
         // mock aws lambda context and all its methods needed
         // for local unit tests
         mockContext = mock(Context.class);
-        when(mockContext.getLogger()).thenReturn(mockLogger);
 
-        /*
+        // TODO
+        // WHEN mock context is asked for logger THEN RETURN mockLogger
+
+        /* no need for this
         when(mockContext.getFunctionName()).thenReturn("mockFunctionName");
         when(mockContext.getFunctionVersion()).thenReturn("mockFunctionVersion");
         when(mockContext.getAwsRequestId()).thenReturn("awsRequestId");

@@ -1,7 +1,7 @@
 ## AWS Serverless Workshop
 ### Serverless Testing
  
-Testing your serverless application means ganining confidence in your code and minimizing the risk of failures in production with the help of
+Testing your serverless application means gainning confidence in your code and minimizing the risk of failures in production with the help of
 
  * **Unit Tests**, for testing the business logic of your serverless functions.
  * **Integration Tests**, for testing the interaction of your serverless functions with other cloud components (e.g. DynamoDB, S3, Kinesis, API Gateway). 
@@ -76,19 +76,19 @@ In most real live scenarios a lambda handler is not triggered directly but with 
 
 SAM helps us to start an API Gateway locally so that we can simulate and test the behaviour of a gateway triggered AWS Lambda function. 
 
-To start the API Gateway for our serverless application locally at port 8000 call
+To start the API Gateway for our serverless application locally at port 8080 call
 
-	sam local start-api –p 8080
+	sam local start-api -p 8080
 
 from the folder where the template is placed. 
 
 When started you can trigger the *GreetingHandler* by sending a http POST request to the serverless function proxied by the API gateway 
 
-	curl -d '{"firstName":"Lars", "lastName":"Roewekamp"}' -H "Content-Type: application/json" -X POST http://localhost:8000/greetings/
+	curl -d '{"firstName":"Lars", "lastName":"Roewekamp"}' -H "Content-Type: application/json" -X POST http://localhost:8080/greetings/
 
 Of course, you can also test what will happen if you send an incorrect (e.g. empty) payload  
 	
-	curl -d '{}' -H "Content-Type: application/json" -X POST http://localhost:8000/greetings/
+	curl -d '{}' -H "Content-Type: application/json" -X POST http://localhost:8080/greetings/
 	
 ##### Step 4: Automate test calls via API Gateway 
 
@@ -98,12 +98,12 @@ Go to the integration test class
 
 	GreetingHandlerIntegrationTest
 
-and make it work ;-) 
+and make it works ;-) 
 
 
 HINT
 > Even if it is possible to simulate AWS and its cloud components locally, it will never behave like the real 
- cloud environment when it comes to latency, memory consumption etc. Therefore it is stricly recommended to execute 
+ cloud environment when it comes to latency, memory consumption etc. Therefore, it is stricly recommended to execute 
  most of your integration tests (also) in the real cloud and not (only) locally! As a rule of thumb execute the 
  positive path in the cloud and only exceptional circumstances - that are hard to emulate in the cloud - locally. 
 

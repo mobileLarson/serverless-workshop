@@ -40,6 +40,12 @@ public class GreetingHandlerV2 implements RequestHandler<APIGatewayProxyRequestE
 
     private static final String ERROR_MISSING_PARAMETERS = "Missing or incorrect parameters. Expected 'firstName' and 'lastName'.";
 
+    private final static Integer HTTP_STATUS_CODE_OK = 200;
+    private final static Integer HTTP_STATUS_CREATED = 201;
+    private final static Integer HTTP_STATUS_CODE_BAD_REQUEST = 400;
+    private final static Integer HTTP_STATUS_CODE_UNPROCESSABLE_ENTITY = 422;
+
+
     private final Gson gson = new Gson();
 
     /**
@@ -61,24 +67,24 @@ public class GreetingHandlerV2 implements RequestHandler<APIGatewayProxyRequestE
 
             //setting up the response message
             responseEvent.setBody(gson.toJson(response, GreetingResponse.class));
-            responseEvent.setStatusCode(200);
+            responseEvent.setStatusCode(HTTP_STATUS_CODE_OK);
             return responseEvent;
         } catch (IllegalArgumentException iae) {
             // set status code to 422 = PRECONDITION FAILED
-            ErrorResponse errorResponse = new ErrorResponse(422, iae.getMessage());
+            ErrorResponse errorResponse = new ErrorResponse(HTTP_STATUS_CODE_BAD_REQUEST, iae.getMessage());
             responseEvent.setBody(gson.toJson(errorResponse, ErrorResponse.class));
-            responseEvent.setStatusCode(422);
+            responseEvent.setStatusCode(HTTP_STATUS_CODE_BAD_REQUEST);
             return responseEvent;
         } catch(JsonSyntaxException | JsonIOException jex) {
-            ErrorResponse errorResponse = new ErrorResponse(400, "JSON Syntax or IO exception");
+            ErrorResponse errorResponse = new ErrorResponse(HTTP_STATUS_CODE_BAD_REQUEST, "JSON Syntax or IO exception");
             responseEvent.setBody(gson.toJson(errorResponse, ErrorResponse.class));
-            responseEvent.setStatusCode(400);
+            responseEvent.setStatusCode(HTTP_STATUS_CODE_BAD_REQUEST);
             return responseEvent;
         } catch(Exception ex) {
-            ErrorResponse errorResponse = new ErrorResponse(400, ex.getMessage());
+            ErrorResponse errorResponse = new ErrorResponse(HTTP_STATUS_CODE_BAD_REQUEST, ex.getMessage());
             ex.printStackTrace();
             responseEvent.setBody(gson.toJson(errorResponse, ErrorResponse.class));
-            responseEvent.setStatusCode(400);
+            responseEvent.setStatusCode(HTTP_STATUS_CODE_BAD_REQUEST);
             return responseEvent;
         }
     }

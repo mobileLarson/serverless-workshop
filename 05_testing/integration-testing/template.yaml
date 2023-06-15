@@ -11,6 +11,11 @@ Globals:
     Timeout: 20
 
 Resources:
+
+  # greetings handler to call via:
+  #
+  # - sam local invoke "Greetings" -e greetings-from-lars.json
+  #	- sam local invoke "Greetings" -e greetings-failure.json
   Greetings:
     Type: AWS::Serverless::Function
     Properties:
@@ -21,6 +26,18 @@ Resources:
       Environment:
         Variables:
           ENVIRONMENT: "test"
+
+
+  # greetings via API handler to call via:
+  #
+  # - sam local invoke "GreetingsViaApi" -e greetings-via-api-from-lars.json
+  # - sam local invoke "GreetingsViaApi" -e greetings-via-api-failure.json
+  #
+  # or vie
+  #
+  # - sam local start-api -p 8080
+  # - curl -d '{"firstName":"Lars", "lastName":"Roewekamp"}' -H "Content-Type: application/json" -X POST http://localhost:8080/greetings/
+
 
   GreetingsViaApi:
     Type: AWS::Serverless::Function

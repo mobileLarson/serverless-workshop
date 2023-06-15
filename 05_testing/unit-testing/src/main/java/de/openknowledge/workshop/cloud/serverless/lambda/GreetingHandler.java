@@ -28,7 +28,7 @@ import de.openknowledge.workshop.cloud.serverless.model.GreetingResponse;
 public class GreetingHandler implements RequestHandler<GreetingRequest, GreetingResponse> {
 
 
-    private static String DEFAULT_GREET = "Hello! I would really like to know, who you are!";
+    private static String DEFAULT_GREET = "Hello! I would really like to know, ...!";
 
     /**
      * Creates a greeting response with the help of a given <code>GreetingRequest</code>
