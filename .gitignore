@@ -19,7 +19,7 @@
 *.tar.gz
 *.rar
 
-IntelliJ IDEA files 
+# IntelliJ IDEA files 
 *.iml
 *.ipr
 /.idea/
