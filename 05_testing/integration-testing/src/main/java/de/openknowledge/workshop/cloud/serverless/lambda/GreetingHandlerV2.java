@@ -45,7 +45,6 @@ public class GreetingHandlerV2 implements RequestHandler<APIGatewayProxyRequestE
     private final static Integer HTTP_STATUS_CODE_BAD_REQUEST = 400;
     private final static Integer HTTP_STATUS_CODE_UNPROCESSABLE_ENTITY = 422;
 
-
     private final Gson gson = new Gson();
 
     /**
