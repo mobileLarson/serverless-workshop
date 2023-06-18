@@ -15,9 +15,7 @@
  */
 package de.openknowledge.workshop.serverless.oms.lambda.create;
 
-import de.openknowledge.workshop.serverless.oms.lambda.delete.DeleteOrderResponse;
 import de.openknowledge.workshop.serverless.oms.model.Order;
-import de.openknowledge.workshop.serverless.oms.model.OrderStatus;
 
 /**
  * Wrapper object for order
