@@ -15,9 +15,6 @@
  */
 package de.openknowledge.workshop.serverless.oms.lambda;
 
-
-import de.openknowledge.workshop.serverless.oms.model.OrderStatus;
-
 /**
  * Wrapper object for order
  */
