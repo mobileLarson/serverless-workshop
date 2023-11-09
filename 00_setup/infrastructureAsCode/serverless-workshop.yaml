@@ -215,7 +215,7 @@ Resources:
                 # Resource: "arn:aws:dynamodb:*:*:table/sw-config-table"
                 Resource: !GetAtt ConfigTable.Arn
 
-                # config table
+                # counter table
               - Effect: "Allow"
                 Action:
                   - "dynamodb:Get*"
