@@ -90,13 +90,15 @@ public class DynamoDbOrderRepository implements OrderRepository {
 
         HashMap<String,AttributeValue> itemKey = new HashMap<String,AttributeValue>();
 
+        // create key map with unique orderId
         itemKey.put(COL_ORDER_ID, AttributeValue.builder().s(order.getOrderId()).build());
 
+        // transform order object to map of key / attributeValue
         Map<String,AttributeValueUpdate> updatedValues =
                 new HashMap<String,AttributeValueUpdate>();
-
         updatedValues = orderToOrderItem(order);
 
+        // initialize update request
         UpdateItemRequest request = UpdateItemRequest.builder()
                 .tableName(ORDER_TABLE_NAME)
                 .key(itemKey)
