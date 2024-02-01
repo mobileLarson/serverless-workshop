@@ -23,9 +23,9 @@ Goto the lambda layers directory
 
 	cd 00_setup/lambda-layer/serverlessWorkshopBaseLayer/
 
-and call the maven install command. Use _./mwnw_ for the provided maven wrapper or _mvn_ for your local maven version: 
+and call the maven install command. Use _./mvnw_ for the provided maven wrapper or _mvn_ for your local maven version: 
 
-	./mwnw clean install -DskipTests
+	./mvnw clean install -DskipTests
 
 ### Step 2: Package example projects
 
@@ -35,7 +35,7 @@ After having installed the lambda layer, go back to the main directory of the wo
 
 and call the maven package command for the whole project: 
 
-	./mwnw clean package -DskipTests
+	./mvnw clean package -DskipTests
 
 This command will download all the remaining 3rd party libraries and compile and package our examples. 
 
